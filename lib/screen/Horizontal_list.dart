@@ -17,7 +17,6 @@ class _HorizontalListState extends State<HorizontalList> {
           children: [
             Container(
               width: 160,
-              color: Colors.cyan,
               child: Center(
                 child: Text(
                   'First Item',
@@ -40,7 +39,6 @@ class _HorizontalListState extends State<HorizontalList> {
                       fontWeight: FontWeight.bold),
                 ),
               ),
-              
               decoration: BoxDecoration(
                 image: DecorationImage(
                   image: AssetImage('images/b.jpg'),
