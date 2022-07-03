@@ -16,6 +16,7 @@ class _HorizontalListState extends State<HorizontalList> {
           scrollDirection: Axis.horizontal,
           children: [
             Container(
+              color: Colors.blue,
               width: 160,
               child: Center(
                 child: Text(

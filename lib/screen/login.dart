@@ -28,12 +28,12 @@ class _loginpageState extends State<loginpage> {
                   return null;
                 },
                 decoration: InputDecoration(
+                  contentPadding: EdgeInsets.only(left: 20),
                   hintText: 'Enter full name',
                 ),
               ),
               TextFormField(
                 obscureText: _ispasswordshow,
-                
                 validator: ((value) {
                   if (value!.isEmpty) {
                     return 'Enter your Password';

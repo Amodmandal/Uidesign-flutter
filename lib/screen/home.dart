@@ -14,63 +14,70 @@ class _HompageState extends State<Hompage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        backgroundColor: Colors.blueGrey,
-        body: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            Row(
-              children: [
-                OutlinedButton(
-                  onPressed: () {
-                    Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                        builder: (context) => HorizontalList(),
-                      ),
-                    );
-                  },
-                  child: Text(
-                    'Horizontal List',
-                    style: TextStyle(fontSize: 20),
-                  ),
-                ),
-                OutlinedButton(
-                  onPressed: () {
-                    Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                        builder: (context) => MyGridPage(),
-                      ),
-                    );
-                  },
-                  child: Text(
-                    'Grid View',
-                    style: TextStyle(fontSize: 20),
-                  ),
-                ),
-              ],
-            ),
-            Expanded(
-              child: ListView.builder(
-                itemCount: _name.length,
-                itemBuilder: (context, index) {
-                  return ListTile(
-                    title: Container(
-                      padding: EdgeInsets.only(top: 20, left: 20),
-                      child: Text(
-                        _name[index],
-                        style: TextStyle(
-                            decoration: TextDecoration.underline,
-                            fontSize: 30,
-                            fontWeight: FontWeight.bold,
-                            color: Colors.amber),
-                      ),
+        body: Container(
+      decoration: BoxDecoration(
+        image: DecorationImage(
+          image: AssetImage('images/b.jpg'),
+          fit: BoxFit.fill,
+        ),
+      ),
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          Row(
+            children: [
+              OutlinedButton(
+                onPressed: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) => HorizontalList(),
                     ),
                   );
                 },
+                child: Text(
+                  'Horizontal List',
+                  style: TextStyle(fontSize: 20),
+                ),
               ),
+              OutlinedButton(
+                onPressed: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) => MyGridPage(),
+                    ),
+                  );
+                },
+                child: Text(
+                  'Grid View',
+                  style: TextStyle(fontSize: 20),
+                ),
+              ),
+            ],
+          ),
+          Expanded(
+            child: ListView.builder(
+              itemCount: _name.length,
+              itemBuilder: (context, index) {
+                return ListTile(
+                  title: Container(
+                    padding: EdgeInsets.only(top: 20, left: 20),
+                    child: Text(
+                      _name[index],
+                      style: TextStyle(
+                          decoration: TextDecoration.underline,
+                          fontSize: 30,
+                          fontWeight: FontWeight.bold,
+                          color: Colors.red),
+                    ),
+                  ),
+                );
+              },
             ),
-          ],
-        ));
+          ),
+        ],
+      ),
+    ));
   }
 }

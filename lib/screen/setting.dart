@@ -13,41 +13,57 @@ class _SettingPageState extends State<SettingPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: SafeArea(
-        child: Column(
-          children: [
-            ElevatedButton(
-              onPressed: () {
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(
-                    builder: ((context) => DetailPage("From Setting page")),
+      body: Container(
+       
+        child: SafeArea(
+          child: Container(
+            decoration: BoxDecoration(
+              image: DecorationImage(
+                image: AssetImage('images/d.jpg'),
+                fit: BoxFit.fill,
+              ),
+             
+            ),
+            padding: EdgeInsets.all(100),
+            child: Center(
+              child: Column(
+                children: [
+                  ElevatedButton(
+                    onPressed: () {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: ((context) =>
+                              DetailPage("From Setting page")),
+                        ),
+                      );
+                    },
+                    child: Text('Send Data'),
                   ),
-                );
-              },
-              child: Text('Send Data'),
+                  ElevatedButton(
+                    onPressed: () {
+                      print('Helo show dialog');
+                      showMeDialog(context);
+                    },
+                    child: Text('Show Dialog'),
+                  ),
+                  ElevatedButton(
+                    onPressed: () {
+                      print('Helo show dialog');
+                      showiOSDialog(context);
+                    },
+                    child: Text('Show  ios Dialog'),
+                  ),
+                  ElevatedButton(
+                    onPressed: () {
+                      _showBottomSheet();
+                    },
+                    child: Text('Bottom Sheet'),
+                  ),
+                ],
+              ),
             ),
-            ElevatedButton(
-              onPressed: () {
-                print('Helo show dialog');
-                showMeDialog(context);
-              },
-              child: Text('Show Dialog'),
-            ),
-            ElevatedButton(
-              onPressed: () {
-                print('Helo show dialog');
-                showiOSDialog(context);
-              },
-              child: Text('Show  ios Dialog'),
-            ),
-            ElevatedButton(
-              onPressed: () {
-                _showBottomSheet();
-              },
-              child: Text('Bottom Sheet'),
-            ),
-          ],
+          ),
         ),
       ),
     );
@@ -106,43 +122,47 @@ class _SettingPageState extends State<SettingPage> {
         context: context,
         builder: (BuildContext context) {
           return Container(
-            color: Colors.amber,
+            color: Color.fromARGB(255, 214, 197, 145),
             height: 300,
-            decoration: bo,
-            child: Column(
-              children: [
-                TextFormField(
-                  keyboardType: TextInputType.name,
-                  validator: (value) {
-                    if (value!.isEmpty) {
-                      return 'Enter your Name';
-                    }
-                    return null;
-                  },
-                  decoration: InputDecoration(
-                    hintText: 'Enter full name',
-                  ),
-                ),
-                TextFormField(
-                  validator: ((value) {
-                    if (value!.isEmpty) {
-                      return 'Enter your Password';
-                    }
-                    if (value.length < 5) {
-                      return 'Enter password greater than 4';
-                    }
-                    return null;
-                  }),
-                  decoration: InputDecoration(
-                    prefix: Icon(Icons.lock),
-                    hintText: 'Enter password',
-                    suffixIcon: IconButton(
-                      icon: Icon(Icons.visibility),
-                      onPressed: () {},
-                    ),
-                  ),
-                ),
-              ],
+            child: Container(
+              padding: EdgeInsets.only(left: 20, top: 20),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Container(
+                      child: Row(
+                    children: [
+                      Icon(Icons.messenger, size: 30),
+                       SizedBox(
+                        width: 10,
+                      ),
+                      Text('Messenger'),
+                    ],
+                  )),
+                  SizedBox(height: 20),
+                  Container(
+                      child: Row(
+                    children: [
+                      Icon(Icons.share, size: 30),
+                       SizedBox(
+                        width: 10,
+                      ),
+                      Text('share'),
+                    ],
+                  )),
+                  SizedBox(height: 20),
+                  Container(
+                      child: Row(
+                    children: [
+                      Icon(Icons.more, size: 30),
+                      SizedBox(
+                        width: 10,
+                      ),
+                      Text('More options'),
+                    ],
+                  )),
+                ],
+              ),
             ),
           );
         });
