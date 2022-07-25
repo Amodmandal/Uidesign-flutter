@@ -13,8 +13,19 @@ class _SettingPageState extends State<SettingPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: AppBar(
+        title: Text('Settings'),
+        automaticallyImplyLeading: false,
+        actions: [
+          IconButton(
+            onPressed: () {
+              print("Acess  alarm clicked");
+            },
+            icon: Icon(Icons.access_alarm),
+          )
+        ],
+      ),
       body: Container(
-       
         child: SafeArea(
           child: Container(
             decoration: BoxDecoration(
@@ -22,7 +33,6 @@ class _SettingPageState extends State<SettingPage> {
                 image: AssetImage('images/d.jpg'),
                 fit: BoxFit.fill,
               ),
-             
             ),
             padding: EdgeInsets.all(100),
             child: Center(
@@ -118,53 +128,44 @@ class _SettingPageState extends State<SettingPage> {
   }
 
   void _showBottomSheet() {
-    showModalBottomSheet(
-        context: context,
-        builder: (BuildContext context) {
-          return Container(
-            color: Color.fromARGB(255, 214, 197, 145),
-            height: 300,
-            child: Container(
-              padding: EdgeInsets.only(left: 20, top: 20),
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Container(
-                      child: Row(
-                    children: [
-                      Icon(Icons.messenger, size: 30),
-                       SizedBox(
-                        width: 10,
-                      ),
-                      Text('Messenger'),
-                    ],
-                  )),
-                  SizedBox(height: 20),
-                  Container(
-                      child: Row(
-                    children: [
-                      Icon(Icons.share, size: 30),
-                       SizedBox(
-                        width: 10,
-                      ),
-                      Text('share'),
-                    ],
-                  )),
-                  SizedBox(height: 20),
-                  Container(
-                      child: Row(
-                    children: [
-                      Icon(Icons.more, size: 30),
-                      SizedBox(
-                        width: 10,
-                      ),
-                      Text('More options'),
-                    ],
-                  )),
-                ],
-              ),
-            ),
-          );
-        });
+    {
+      showModalBottomSheet(
+          context: context,
+          builder: (context) {
+            return Column(
+              mainAxisSize: MainAxisSize.min,
+              children: <Widget>[
+                ListTile(
+                  leading: new Icon(Icons.photo),
+                  title: new Text('Photo'),
+                  onTap: () {
+                    Navigator.pop(context);
+                  },
+                ),
+                ListTile(
+                  leading: new Icon(Icons.music_note),
+                  title: new Text('Music'),
+                  onTap: () {
+                    Navigator.pop(context);
+                  },
+                ),
+                ListTile(
+                  leading: new Icon(Icons.videocam),
+                  title: new Text('Video'),
+                  onTap: () {
+                    Navigator.pop(context);
+                  },
+                ),
+                ListTile(
+                  leading: new Icon(Icons.share),
+                  title: new Text('Share'),
+                  onTap: () {
+                    Navigator.pop(context);
+                  },
+                ),
+              ],
+            );
+          });
+    }
   }
 }

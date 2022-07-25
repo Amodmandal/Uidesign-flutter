@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 
 class ProfilePage extends StatefulWidget {
-  ProfilePage({Key? key}) : super(key: key);
+  String userName;
+  String pass;
+  ProfilePage(this.userName, this.pass);
 
   @override
   State<ProfilePage> createState() => _ProfilePageState();
@@ -10,14 +12,46 @@ class ProfilePage extends StatefulWidget {
 class _ProfilePageState extends State<ProfilePage> {
   @override
   Widget build(BuildContext context) {
-    return Container(
-      decoration: BoxDecoration(
-        image: DecorationImage(
-          image: AssetImage('images/c.jpg'),
-          fit: BoxFit.fill,
+    return Scaffold(
+      body: SafeArea(
+        child: Column(
+          children: [
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                Text("Hello there!\n"+
+                  widget.userName + " " + widget.pass,
+                  style: TextStyle(fontSize: 30,fontFamily: 'Lobster'),
+                ),
+                // Image.asset(
+                //   'images/c.jpg',
+                //   height: 100,
+                //   width: 150,
+                //   fit: BoxFit.cover,
+                // ),
+                GestureDetector(
+                  onTap: () {
+
+                  },
+                  child: CircleAvatar(
+                    backgroundImage: AssetImage('images/c.jpg'),
+                    radius: 40,
+                  ),
+                )
+
+                // Container(
+                //   decoration: BoxDecoration(
+                //     image: DecorationImage(
+                //       image: AssetImage('images/c.jpg'),
+
+                //     ),
+                //   ),
+                // )
+              ],
+            ),
+          ],
         ),
       ),
-      child: Center(child: Text('Profile')),
     );
   }
 }

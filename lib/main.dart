@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_application_2/screen/Grade.dart';
 import 'package:flutter_application_2/screen/forgotpassword.dart';
 import 'package:flutter_application_2/screen/login.dart';
 
 import 'package:flutter_application_2/screen/register_page.dart';
+import 'package:flutter_application_2/grade_record.dart';
 
 void main() {
   runApp(const MyApp());
@@ -20,7 +22,7 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
-      home: loginpage(),
+      home: sempage(),
     );
   }
 }
@@ -52,7 +54,7 @@ class _MyHomePageState extends State<MyHomePage> {
         Text('Enter you registered email address of phone number to login ');
 
     Widget nameSection = Text('Email or phone number');
-    Widget enterEmailSection = TextFormField(
+    Widget enterEmailSection =Flexible( child:(TextFormField(
       validator: ((value) {
         if (value!.isEmpty || !value.contains('@')) {
           return 'Enter valid Email';
@@ -64,7 +66,7 @@ class _MyHomePageState extends State<MyHomePage> {
         labelText: 'Enter email or phone number',
         prefix: Icon(Icons.email),
       ),
-    );
+    )));
 
     Widget passwordSection = Text('Enter your password');
 
@@ -141,58 +143,56 @@ class _MyHomePageState extends State<MyHomePage> {
     );
 
     return SafeArea(
-      child: SingleChildScrollView(
-        child: Scaffold(
-          backgroundColor: Colors.amber,
-          body: Padding(
-            padding: const EdgeInsets.only(top: 15.0),
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.start,
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                Container(
-                  padding: EdgeInsets.only(left: 20),
-                  child: Icon(Icons.arrow_back_ios),
-                ),
-                SizedBox(height: 10),
-                Flexible(
-                  child: Form(
-                    key: _formKey,
-                    child: Container(
-                      padding: EdgeInsets.only(left: 20, right: 20),
-                      decoration: BoxDecoration(
-                          color: Colors.white,
-                          borderRadius: BorderRadius.only(
-                              topLeft: Radius.circular(20),
-                              topRight: Radius.circular(20))),
-                      child: Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          SizedBox(height: 20),
-                          titleSection,
-                          SizedBox(height: 10),
-                          secondTitle,
-                          SizedBox(height: 10),
-                          nameSection,
-                          SizedBox(height: 10),
-                          enterEmailSection,
-                          SizedBox(height: 10),
-                          passwordSection,
-                          SizedBox(height: 10),
-                          enterPasswordSection,
-                          SizedBox(height: 10),
-                          forgotPassword,
-                          SizedBox(height: 10),
-                          loginButton,
-                          SizedBox(height: 50),
-                          Center(child: bottomSection),
-                        ],
-                      ),
+      child: Scaffold(
+        backgroundColor: Colors.amber,
+        body: Padding(
+          padding: const EdgeInsets.only(top: 15.0),
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.start,
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Container(
+                padding: EdgeInsets.only(left: 20),
+                child: Icon(Icons.arrow_back_ios),
+              ),
+              SizedBox(height: 10),
+              Form(
+                key: _formKey,
+                child:Expanded(
+                  child: Container(
+                    padding: EdgeInsets.only(left: 20, right: 20),
+                    decoration: BoxDecoration(
+                        color: Colors.white,
+                        borderRadius: BorderRadius.only(
+                            topLeft: Radius.circular(20),
+                            topRight: Radius.circular(20))),
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        SizedBox(height: 20),
+                        titleSection,
+                        SizedBox(height: 10),
+                        secondTitle,
+                        SizedBox(height: 10),
+                        nameSection,
+                        SizedBox(height: 10),
+                        enterEmailSection,
+                        SizedBox(height: 10),
+                        passwordSection,
+                        SizedBox(height: 10),
+                        enterPasswordSection,
+                        SizedBox(height: 10),
+                        forgotPassword,
+                        SizedBox(height: 10),
+                        loginButton,
+                        SizedBox(height: 50),
+                        Center(child: bottomSection),
+                      ],
                     ),
                   ),
                 ),
-              ],
-            ),
+              ),
+            ],
           ),
         ),
       ),
